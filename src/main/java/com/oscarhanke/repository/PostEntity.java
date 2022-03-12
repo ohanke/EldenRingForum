@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "post")
 public class PostEntity {
 
     @Id
@@ -14,6 +16,15 @@ public class PostEntity {
     private String author;
     private String title;
     private String content;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public PostEntity setId(Integer id) {
+        this.id = id;
+        return this;
+    }
 
     public String getAuthor() {
         return author;
