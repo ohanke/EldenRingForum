@@ -1,0 +1,9 @@
+<div>index.html hello world!</div>
+
+<ul>
+    <li th:each="post : ${posts}">
+        <p th:text="${post.author}"></p>
+        <p th:text="${post.title}"></p>
+        <p th:text="${post.content}"></p>
+    </li>
+</ul>
