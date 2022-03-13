@@ -1,6 +1,6 @@
-package com.oscarhanke.controller;
+package com.oscarhanke.module.post;
 
-import com.oscarhanke.service.PostService;
+import com.oscarhanke.module.post.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

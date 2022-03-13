@@ -1,7 +1,7 @@
-package com.oscarhanke.mappers;
+package com.oscarhanke.module.post.mappers;
 
-import com.oscarhanke.dto.PostDto;
-import com.oscarhanke.repository.PostEntity;
+import com.oscarhanke.module.post.dto.PostDto;
+import com.oscarhanke.module.post.repository.PostEntity;
 
 import java.util.List;
 import java.util.stream.Collectors;

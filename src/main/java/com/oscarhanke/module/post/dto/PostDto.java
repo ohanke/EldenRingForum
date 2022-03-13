@@ -1,4 +1,4 @@
-package com.oscarhanke.dto;
+package com.oscarhanke.module.post.dto;
 
 public class PostDto {
     private final String author;
