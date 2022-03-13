@@ -20,4 +20,14 @@ public class PostService {
         List<PostDto> dtos = PostMapper.map(entities);
         return dtos;
     }
+
+    public PostDto getPost(String uuid){
+        List<PostEntity> entities = postRepository.findAll();
+        PostEntity entity = entities.stream()
+                .filter(i->i.getUuid().equals(uuid))
+                .findFirst()
+                .get();
+        PostDto dto = PostMapper.map(entity);
+        return dto;
+    }
 }

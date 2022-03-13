@@ -12,7 +12,8 @@ public class PostMapper {
         return new PostDto(
                 entity.getAuthor(),
                 entity.getTitle(),
-                entity.getContent());
+                entity.getContent(),
+                entity.getUuid());
     }
 
     public static List<PostDto> map(List<PostEntity> entities){
