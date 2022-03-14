@@ -1,10 +1,14 @@
 package com.oscarhanke.module.post.repository;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "post")
@@ -12,17 +16,20 @@ public class PostEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String author;
     private String title;
     private String content;
     private String uuid;
 
-    public Integer getId() {
+    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<CommentEntity> comments;
+
+    public Long getId() {
         return id;
     }
 
-    public PostEntity setId(Integer id) {
+    public PostEntity setId(Long id) {
         this.id = id;
         return this;
     }
@@ -61,6 +68,15 @@ public class PostEntity {
 
     public String getUuid() {
         return uuid;
+    }
+
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public PostEntity setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+        return this;
     }
 }
 

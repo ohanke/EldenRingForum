@@ -16,4 +16,19 @@ public class CommentDto {
     public String getContent() {
         return content;
     }
+
+    public CommentDto setAuthor(String author) {
+        this.author = author;
+        return this;
+    }
+
+    public CommentDto setContent(String content) {
+        this.content = content;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
