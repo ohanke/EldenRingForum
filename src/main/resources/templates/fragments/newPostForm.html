@@ -1,0 +1,21 @@
+<div class="container" th:fragment="newPostForm">
+    <h1 class="mt-5">New Post</h1>
+
+    <div class="col-4">
+        <form action="#" th:action="@{/savePost}" th:object="${postForm}" method="POST">
+            <div class="form-group">
+                <label>Author</label>
+                <input type="text" th:field="*{author}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" th:field="*{title}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Content</label>
+                <input type="text" th:field="*{content}" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Save Post</button>
+        </form>
+    </div>
+</div>

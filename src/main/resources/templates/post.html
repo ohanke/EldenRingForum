@@ -37,31 +37,19 @@
 <main class="flex-shrink-0">
     <div class="container">
         <!-- TUTU -->
-        <div>
-            <h1 th:text="${post.title}"></h1>
-            <div th:text="${post.content}"></div>
-        </div>
+        <div th:replace="fragments/post.html :: post"></div>
         <br/>
         <br/>
         <ul class="list-group">
             <li th:each="comment : ${post.comments}" class="list-group-item">
-                <strong><p th:text="${comment.author}"></p></strong>
-                <p th:text="${comment.content}"></p>
+                <div th:replace="fragments/comment.html :: template(comment = ${comment})"></div>
             </li>
         </ul>
 
     </div>
 </main>
 
-<footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-        <span class="text-muted">by oscar hanke</span>
-    </div>
-</footer>
+<div th:replace="fragments/footer.html :: footer"></div>
 
 </body>
 </html>
-
-<p>index.html</p>
-
-
