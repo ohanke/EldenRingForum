@@ -1,7 +1,7 @@
 package com.oscarhanke.module.post.service;
 
 import com.oscarhanke.module.post.dto.PostDto;
-import com.oscarhanke.module.post.mappers.PostMapper;
+import com.oscarhanke.module.post.mappers.PostEntityToDtoMapper;
 import com.oscarhanke.module.post.repository.PostRepository;
 import com.oscarhanke.module.post.repository.PostEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class PostService {
 
     public List<PostDto> getPosts(){
         List<PostEntity> entities = postRepository.findAll();
-        List<PostDto> dtos = PostMapper.map(entities);
+        List<PostDto> dtos = PostEntityToDtoMapper.map(entities);
         return dtos;
     }
 
@@ -27,7 +27,7 @@ public class PostService {
                 .filter(i->i.getUuid().equals(uuid))
                 .findFirst()
                 .get();
-        PostDto dto = PostMapper.map(entity);
+        PostDto dto = PostEntityToDtoMapper.map(entity);
         return dto;
     }
 }
