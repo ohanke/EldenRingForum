@@ -1,4 +1,4 @@
-package com.oscarhanke.module.post;
+package com.oscarhanke.module.post.controller;
 
 import com.oscarhanke.module.post.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,5 @@ public class DashboardController {
     public String getHome(Model model){
         model.addAttribute("posts", postService.getPosts());
         return "dashboard.html";
-    }
-
-    @GetMapping("/post/{uuid}")
-    public String getPost(@PathVariable("uuid") String uuid, Model model){
-        model.addAttribute("post", postService.getPost(uuid));
-        return "post.html";
     }
 }

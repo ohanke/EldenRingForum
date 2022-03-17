@@ -1,0 +1,17 @@
+<div class="container" th:fragment="commentForm">
+    <h1 class="mt-5">Add Comment</h1>
+
+    <div class="col-4">
+        <form action="#" th:action="@{/post/{uuid}/saveComment(uuid=${post.uuid})}" th:object="${commentForm}" method="POST">
+            <div class="form-group">
+                <label>Author</label>
+                <input type="text" th:field="*{author}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Content</label>
+                <input type="text" th:field="*{content}" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Save Post</button>
+        </form>
+    </div>
+</div>

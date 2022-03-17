@@ -1,4 +1,4 @@
-package com.oscarhanke.module.post.mappers;
+package com.oscarhanke.module.post.mappers.post;
 
 import com.oscarhanke.module.post.dto.PostDto;
 import com.oscarhanke.module.post.repository.PostEntity;

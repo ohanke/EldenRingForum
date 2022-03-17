@@ -1,6 +1,7 @@
-package com.oscarhanke.module.post.mappers;
+package com.oscarhanke.module.post.mappers.post;
 
 import com.oscarhanke.module.post.dto.PostDto;
+import com.oscarhanke.module.post.mappers.comment.CommentEntityToDtoMapper;
 import com.oscarhanke.module.post.repository.PostEntity;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class PostEntityToDtoMapper {
                 entity.getTitle(),
                 entity.getContent(),
                 entity.getUuid(),
-                CommentMapper.map(entity.getComments()));
+                CommentEntityToDtoMapper.map(entity.getComments()));
 
     }
 

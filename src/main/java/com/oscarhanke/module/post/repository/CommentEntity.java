@@ -48,4 +48,13 @@ public class CommentEntity {
         this.content = content;
         return this;
     }
+
+    public PostEntity getPost() {
+        return post;
+    }
+
+    public CommentEntity setPost(PostEntity post) {
+        this.post = post;
+        return this;
+    }
 }

@@ -6,5 +6,4 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 public interface PostRepository extends JpaRepository<PostEntity, Long>, JpaSpecificationExecutor<PostEntity> {
     PostEntity findOneByUuid(String Uuid);
-//    void savePost(PostDto postDto);
 }
