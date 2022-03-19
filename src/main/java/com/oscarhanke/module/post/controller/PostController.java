@@ -46,4 +46,10 @@ public class PostController {
         postRepository.save(postEntity);
         return "redirect:post/" + postEntity.getUuid();
     }
+
+    @GetMapping("/deletePost/{uuid}")
+    public String deletePost(@PathVariable (name = "uuid") String uuid){
+        postRepository.delete(postRepository.findOneByUuid(uuid));
+        return "redirect:/dashboard";
+    }
 }

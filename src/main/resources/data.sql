@@ -13,3 +13,9 @@ insert into comment(id, author, content, post_id) values (5, 'basia', 'bardzo po
 insert into comment(id, author, content, post_id) values (6, 'kasia', 'ty cebulaku', 6);
 insert into comment(id, author, content, post_id) values (7, 'asia', 'zal mi cie', 1);
 insert into comment(id, author, content, post_id) values (8, 'paweł', 'jak wrocic do strony glownej???', 1);
+
+insert into comment_rating(id ,comment_id, status, author) values (1, 1, 'LIKE', 'Asia');
+insert into comment_rating(id, comment_id, status, author) values (2, 2, 'LIKE', 'Basia');
+insert into comment_rating(id, comment_id, status, author) values (3, 3, 'DISLIKE', 'Kasia');
+insert into comment_rating(id, comment_id, status, author) values (4, 4, 'LIKE', 'Marek');
+insert into comment_rating(id, comment_id, status, author) values (5, 5, 'DISLIKE', 'Arek');

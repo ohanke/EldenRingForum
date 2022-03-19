@@ -1,10 +1,12 @@
 package com.oscarhanke.module.post.dto;
 
 public class CommentDto {
+    private Long id;
     private String author;
     private String content;
 
-    public CommentDto(String author, String content) {
+    public CommentDto(Long id, String author, String content) {
+        this.id = id;
         this.author = author;
         this.content = content;
     }
@@ -24,6 +26,15 @@ public class CommentDto {
 
     public CommentDto setContent(String content) {
         this.content = content;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public CommentDto setId(Long id) {
+        this.id = id;
         return this;
     }
 

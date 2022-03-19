@@ -8,6 +8,7 @@ import com.oscarhanke.module.post.repository.PostEntity;
 import com.oscarhanke.module.post.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,11 +21,17 @@ public class CommentController {
     @Autowired
     private CommentRepository commentRepository;
 
-    @PostMapping("/post/{uuid}/saveComment")
+    @PostMapping("/post/{uuid}/addComment")
     public String saveCreatedComment(@PathVariable("uuid") String uuid, @ModelAttribute("commentForm") CommentForm commentForm) {
         PostEntity postEntity = postRepository.findOneByUuid(uuid);
         CommentEntity commentEntity = CommentFormToEntityMapper.map(commentForm, postEntity);
         commentRepository.save(commentEntity);
+        return "redirect:/post/{uuid}";
+    }
+
+    @GetMapping("post/{uuid}/deleteComment/{id}")
+    public String deleteComment(@PathVariable ("id") Long id){
+        commentRepository.delete(commentRepository.getById(id));
         return "redirect:/post/{uuid}";
     }
 }

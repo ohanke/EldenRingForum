@@ -13,6 +13,7 @@
         <!-- TUTU -->
         <div th:replace="fragments/post.html :: post"></div>
         <br/>
+        <a th:href="@{/deletePost/{uuid}(uuid=${post.uuid})}" class="btn btn-danger">Delete Post</a>
         <br/>
         <div th:replace="fragments/commentForm.html :: commentForm"></div>
         <br/>

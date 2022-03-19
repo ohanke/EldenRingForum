@@ -15,6 +15,7 @@ public class CommentEntityToDtoMapper {
 
     public static CommentDto map(CommentEntity entity){
         return new CommentDto(
+                entity.getId(),
                 entity.getAuthor(),
                 entity.getContent()
         );

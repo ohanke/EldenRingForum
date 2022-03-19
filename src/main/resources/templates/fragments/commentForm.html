@@ -2,7 +2,7 @@
     <h1 class="mt-5">Add Comment</h1>
 
     <div class="col-4">
-        <form action="#" th:action="@{/post/{uuid}/saveComment(uuid=${post.uuid})}" th:object="${commentForm}" method="POST">
+        <form action="#" th:action="@{/post/{uuid}/addComment(uuid=${post.uuid})}" th:object="${commentForm}" method="POST">
             <div class="form-group">
                 <label>Author</label>
                 <input type="text" th:field="*{author}" class="form-control">
@@ -11,7 +11,8 @@
                 <label>Content</label>
                 <input type="text" th:field="*{content}" class="form-control">
             </div>
-            <button type="submit" class="btn btn-primary">Save Post</button>
+            <br/>
+            <button type="submit" class="btn btn-primary">Add Comment</button>
         </form>
     </div>
 </div>
