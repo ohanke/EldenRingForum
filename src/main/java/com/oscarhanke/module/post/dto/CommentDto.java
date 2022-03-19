@@ -1,14 +1,35 @@
 package com.oscarhanke.module.post.dto;
 
+import java.util.List;
+
 public class CommentDto {
     private Long id;
     private String author;
     private String content;
+    private int likes;
+    private int dislikes;
+
 
     public CommentDto(Long id, String author, String content) {
         this.id = id;
         this.author = author;
         this.content = content;
+    }
+
+    public CommentDto(Long id, String author, String content, int likes, int dislikes) {
+        this.id = id;
+        this.author = author;
+        this.content = content;
+        this.likes = likes;
+        this.dislikes = dislikes;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public int getDislikes() {
+        return dislikes;
     }
 
     public String getAuthor() {

@@ -16,7 +16,6 @@ public class PostEntityToDtoMapper {
                 entity.getContent(),
                 entity.getUuid(),
                 CommentEntityToDtoMapper.map(entity.getComments()));
-
     }
 
     public static List<PostDto> map(List<PostEntity> entities){

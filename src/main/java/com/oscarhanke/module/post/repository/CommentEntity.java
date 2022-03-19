@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "comment")
@@ -71,5 +72,13 @@ public class CommentEntity {
     public CommentEntity setPost(PostEntity post) {
         this.post = post;
         return this;
+    }
+
+    public int getLikes(){
+        return ratings.stream().filter(r -> r.getStatus().equals(RatingStatus.LIKE)).collect(Collectors.toSet()).size();
+    }
+
+    public int getDislikes(){
+        return ratings.stream().filter(r -> r.getStatus().equals(RatingStatus.DISLIKE)).collect(Collectors.toSet()).size();
     }
 }

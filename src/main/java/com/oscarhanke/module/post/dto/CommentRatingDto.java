@@ -6,7 +6,6 @@ public class CommentRatingDto {
     private RatingStatus status;
 
     public CommentRatingDto(RatingStatus status) {
-        this.status = status;
     }
 
     public CommentRatingDto() {

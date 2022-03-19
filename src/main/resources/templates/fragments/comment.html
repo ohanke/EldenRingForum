@@ -1,6 +1,8 @@
 <div th:fragment="template(comment)">
     <strong><p th:text="${comment.author}"></p></strong>
     <p th:text="${comment.content}"></p>
+    <p th:text="${comment.getLikes}"></p>
+    <p th:text="${comment.getDislikes}"></p>
     <div>
         <a th:href="@{/post/{uuid}/comment/{id}/rating/LIKE(uuid=${post.uuid},id=${comment.id})}" class="btn btn-primary">Like</a>
         <a th:href="@{/post/{uuid}/comment/{id}/rating/DISLIKE(uuid=${post.uuid},id=${comment.id})}" class="btn btn-danger">Dislike</a>
