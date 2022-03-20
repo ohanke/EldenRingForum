@@ -1,4 +1,4 @@
-package com.oscarhanke.module.post.repository;
+package com.oscarhanke.module.post.repository.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -75,10 +75,10 @@ public class CommentEntity {
     }
 
     public int getLikes(){
-        return ratings.stream().filter(r -> r.getStatus().equals(RatingStatus.LIKE)).collect(Collectors.toSet()).size();
+        return ratings.stream().filter(r -> r.getStatus().equals(CommentRatingStatus.LIKE)).collect(Collectors.toSet()).size();
     }
 
     public int getDislikes(){
-        return ratings.stream().filter(r -> r.getStatus().equals(RatingStatus.DISLIKE)).collect(Collectors.toSet()).size();
+        return ratings.stream().filter(r -> r.getStatus().equals(CommentRatingStatus.DISLIKE)).collect(Collectors.toSet()).size();
     }
 }

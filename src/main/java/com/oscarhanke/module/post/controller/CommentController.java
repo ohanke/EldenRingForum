@@ -2,9 +2,9 @@ package com.oscarhanke.module.post.controller;
 
 import com.oscarhanke.module.post.form.CommentForm;
 import com.oscarhanke.module.post.mappers.comment.CommentFormToEntityMapper;
-import com.oscarhanke.module.post.repository.CommentEntity;
+import com.oscarhanke.module.post.repository.entity.CommentEntity;
 import com.oscarhanke.module.post.repository.CommentRepository;
-import com.oscarhanke.module.post.repository.PostEntity;
+import com.oscarhanke.module.post.repository.entity.PostEntity;
 import com.oscarhanke.module.post.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

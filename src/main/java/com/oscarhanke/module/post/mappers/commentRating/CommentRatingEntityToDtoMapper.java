@@ -1,7 +1,7 @@
 package com.oscarhanke.module.post.mappers.commentRating;
 
 import com.oscarhanke.module.post.dto.CommentRatingDto;
-import com.oscarhanke.module.post.repository.CommentRatingEntity;
+import com.oscarhanke.module.post.repository.entity.CommentRatingEntity;
 
 import java.util.List;
 import java.util.stream.Collectors;

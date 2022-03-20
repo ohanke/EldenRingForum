@@ -1,7 +1,7 @@
 package com.oscarhanke.module.post.mappers.post;
 
 import com.oscarhanke.module.post.dto.PostDto;
-import com.oscarhanke.module.post.repository.PostEntity;
+import com.oscarhanke.module.post.repository.entity.PostEntity;
 
 public class PostDtoToEntityMapper {
     public static PostEntity map(PostDto postDto){

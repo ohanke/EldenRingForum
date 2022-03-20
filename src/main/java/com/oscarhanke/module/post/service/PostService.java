@@ -3,7 +3,7 @@ package com.oscarhanke.module.post.service;
 import com.oscarhanke.module.post.dto.PostDto;
 import com.oscarhanke.module.post.mappers.post.PostEntityToDtoMapper;
 import com.oscarhanke.module.post.repository.PostRepository;
-import com.oscarhanke.module.post.repository.PostEntity;
+import com.oscarhanke.module.post.repository.entity.PostEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

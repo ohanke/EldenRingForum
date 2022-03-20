@@ -1,4 +1,4 @@
-package com.oscarhanke.module.post.repository;
+package com.oscarhanke.module.post.repository.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

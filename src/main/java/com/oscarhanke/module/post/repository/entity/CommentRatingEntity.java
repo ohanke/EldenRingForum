@@ -1,4 +1,4 @@
-package com.oscarhanke.module.post.repository;
+package com.oscarhanke.module.post.repository.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "comment_rating")
@@ -19,7 +18,7 @@ public class CommentRatingEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Enumerated(EnumType.STRING)
-    private RatingStatus status;
+    private CommentRatingStatus status;
     private String author;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -44,11 +43,11 @@ public class CommentRatingEntity {
         return this;
     }
 
-    public RatingStatus getStatus() {
+    public CommentRatingStatus getStatus() {
         return status;
     }
 
-    public CommentRatingEntity setStatus(RatingStatus status) {
+    public CommentRatingEntity setStatus(CommentRatingStatus status) {
         this.status = status;
         return this;
     }

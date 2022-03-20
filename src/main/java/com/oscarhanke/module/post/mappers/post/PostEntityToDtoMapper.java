@@ -2,7 +2,7 @@ package com.oscarhanke.module.post.mappers.post;
 
 import com.oscarhanke.module.post.dto.PostDto;
 import com.oscarhanke.module.post.mappers.comment.CommentEntityToDtoMapper;
-import com.oscarhanke.module.post.repository.PostEntity;
+import com.oscarhanke.module.post.repository.entity.PostEntity;
 
 import java.util.List;
 import java.util.stream.Collectors;

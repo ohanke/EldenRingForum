@@ -2,11 +2,11 @@ package com.oscarhanke.module.post.controller;
 
 import com.oscarhanke.module.post.dto.CommentRatingDto;
 import com.oscarhanke.module.post.mappers.commentRating.CommentRatingDtoToEntityMapper;
-import com.oscarhanke.module.post.repository.CommentEntity;
-import com.oscarhanke.module.post.repository.CommentRatingEntity;
+import com.oscarhanke.module.post.repository.entity.CommentEntity;
+import com.oscarhanke.module.post.repository.entity.CommentRatingEntity;
 import com.oscarhanke.module.post.repository.CommentRatingRepository;
 import com.oscarhanke.module.post.repository.CommentRepository;
-import com.oscarhanke.module.post.repository.RatingStatus;
+import com.oscarhanke.module.post.repository.entity.CommentRatingStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +22,7 @@ public class CommentRatingController {
 
     @GetMapping("/post/{uuid}/comment/{id}/rating/{status}")
     public String getRating(@PathVariable ("status") String status, @PathVariable ("id") Long commentId) {
-        CommentRatingDto ratingDto = new CommentRatingDto(RatingStatus.valueOf(status));
+        CommentRatingDto ratingDto = new CommentRatingDto(CommentRatingStatus.valueOf(status));
         CommentEntity commentEntity = commentRepository.getById(commentId);
         CommentRatingEntity ratingEntity = CommentRatingDtoToEntityMapper.map(ratingDto, commentEntity);
         commentRatingRepository.save(ratingEntity);
