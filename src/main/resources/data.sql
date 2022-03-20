@@ -20,4 +20,4 @@ insert into comment_rating(id, comment_id, status, author) values (3, 3, 'DISLIK
 insert into comment_rating(id, comment_id, status, author) values (4, 4, 'LIKE', 'Marek');
 insert into comment_rating(id, comment_id, status, author) values (5, 5, 'DISLIKE', 'Arek');
 
-insert into user(username, password, account_non_locked) values ('test1', 'test1', true);
+insert into user(username, password, account_non_locked) values ('user', '12345', true);
