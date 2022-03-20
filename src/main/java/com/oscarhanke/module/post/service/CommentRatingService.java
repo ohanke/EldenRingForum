@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class commentRatingService {
+public class CommentRatingService {
 }
