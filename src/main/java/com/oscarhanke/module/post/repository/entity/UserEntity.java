@@ -1,92 +1,79 @@
 package com.oscarhanke.module.post.repository.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
-public class UserEntity {
+public class UserEntity implements UserDetails {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(unique = true)
     private String username;
     private String password;
-    @Column(unique = true)
-    private String email;
-    @Enumerated(EnumType.STRING)
-    private UserRoles role;
-    @Column(name = "is_locked")
-    private boolean isLocked;
+    @Column(name = "account_non_locked")
+    private boolean accountNonLocked;
+
+    public UserEntity(String username, String password, boolean accountNonLocked) {
+        this.username = username;
+        this.password = password;
+        this.accountNonLocked = accountNonLocked;
+    }
 
     public UserEntity() {
     }
 
-    public UserEntity(String username, String password, String email, UserRoles role, boolean isLocked) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.role = role;
-        this.isLocked = isLocked;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(() -> "read");
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public UserEntity setId(Long id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public UserEntity setUsername(String username) {
-        this.username = username;
-        return this;
-    }
-
+    @Override
     public String getPassword() {
         return password;
     }
-
-    public UserEntity setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
-        return this;
+    }
+    @Override
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+    @Override
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+    @Override public boolean isCredentialsNonExpired() {
+        return true;
+    }
+    @Override public boolean isEnabled() {
+        return true;
     }
 
-    public String getEmail() {
-        return email;
+    public void setAccountNonLocked(Boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
     }
-
-    public UserEntity setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public UserRoles getRole() {
-        return role;
-    }
-
-    public UserEntity setRole(UserRoles role) {
-        this.role = role;
-        return this;
-    }
-
-    public boolean isLocked() {
-        return isLocked;
-    }
-
-    public UserEntity setLocked(boolean locked) {
-        isLocked = locked;
-        return this;
+    public boolean getAccountNonLocked() {
+        return accountNonLocked;
     }
 }
