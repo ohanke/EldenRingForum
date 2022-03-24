@@ -20,6 +20,4 @@ insert into comment_rating(id, comment_id, status, author) values (3, 3, 'DISLIK
 insert into comment_rating(id, comment_id, status, author) values (4, 4, 'LIKE', 'Marek');
 insert into comment_rating(id, comment_id, status, author) values (5, 5, 'DISLIKE', 'Arek');
 
-insert into user(id, username, password, email, role, is_locked) values (1, 'admin', 'admin1', 'admin@wp.pl', 'ADMIN', false);
-insert into user(id, username, password, email, role, is_locked) values (2, 'andrzej', 'nowak', 'anowak@wp.pl', 'USER', false);
-insert into user(id, username, password, email, role, is_locked) values (3, 'marian', 'kowalski', 'mkowalski@wp.pl', 'USER', false);
+insert into user(username, password, account_non_locked) values ('user','12345', true);
