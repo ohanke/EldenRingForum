@@ -19,3 +19,7 @@ insert into comment_rating(id, comment_id, status, author) values (2, 2, 'LIKE',
 insert into comment_rating(id, comment_id, status, author) values (3, 3, 'DISLIKE', 'Kasia');
 insert into comment_rating(id, comment_id, status, author) values (4, 4, 'LIKE', 'Marek');
 insert into comment_rating(id, comment_id, status, author) values (5, 5, 'DISLIKE', 'Arek');
+
+insert into user(id, username, password, email, role, is_locked) values (1, 'admin', 'admin1', 'admin@wp.pl', 'ADMIN', false);
+insert into user(id, username, password, email, role, is_locked) values (2, 'oscar', 'hanke', 'ohanke@wp.pl', 'USER', false);
+insert into user(id, username, password, email, role, is_locked) values (3, 'marian', 'kowalski', 'mkowalski@wp.pl', 'USER', false);

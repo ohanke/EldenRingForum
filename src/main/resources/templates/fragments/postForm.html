@@ -5,15 +5,15 @@
         <form action="#" th:action="@{/savePost}" th:object="${postForm}" method="POST">
             <div class="form-group">
                 <label>Author</label>
-                <input type="text" th:field="*{author}" class="form-control">
+                <input type="text" th:field="*{author}" class="form-control" required autofocus="autofocus">
             </div>
             <div class="form-group">
                 <label>Title</label>
-                <input type="text" th:field="*{title}" class="form-control">
+                <input type="text" th:field="*{title}" class="form-control" required autofocus="autofocus">
             </div>
             <div class="form-group">
                 <label>Content</label>
-                <input type="text" th:field="*{content}" class="form-control">
+                <input type="text" th:field="*{content}" class="form-control" required autofocus="autofocus">
             </div>
             <button type="submit" class="btn btn-primary">Save Post</button>
         </form>
