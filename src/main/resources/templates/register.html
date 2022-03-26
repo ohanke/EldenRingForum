@@ -19,7 +19,12 @@
         <label for="password"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="password" id="password" required>
 
-        <button type="submit" class="registerbtn">Register</button>
+        <a th:href="@{/login}">
+            <button type="submit" class="registerbtn">Register</button>
+        </a>
+        <br/>
+        <br/>
+        <a th:href="@{/login}"><strong>Already registered?</strong></a>
     </div>
 
 </form>

@@ -27,6 +27,7 @@ public class HelloController {
     public String index() {
         return "index";
     }
+
     @GetMapping("/login")
     public String login(HttpServletRequest request, HttpSession session) {
         session.setAttribute(
@@ -43,11 +44,13 @@ public class HelloController {
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = {
             MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
     )
-    public void addUser(@RequestParam Map<String, String> body) {
+    public String addUser(@RequestParam Map<String, String> body) {
         UserEntity user = new UserEntity(); user.setUsername(body.get("username"));
         user.setPassword(passwordEncoder.encode(body.get("password")));
         user.setAccountNonLocked(true);
         userDetailsManager.createUser(user);
+        return "redirect:login/";
+
     }
     private String getErrorMessage(HttpServletRequest request, String key) {
         Exception exception = (Exception) request.getSession().getAttribute(key);
