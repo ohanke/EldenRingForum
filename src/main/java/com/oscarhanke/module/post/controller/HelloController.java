@@ -23,7 +23,7 @@ public class HelloController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @GetMapping("/")
+    @GetMapping("/account")
     public String index() {
         return "index";
     }

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
-    <title>
-        Hello World!
-    </title>
-</head>
+<div th:replace="fragments/head.html :: template"></div>
+
 <body>
+
+<div th:replace="fragments/header.html :: header"></div>
+<br/>
+<br/>
+<br/>
 <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out"/>
