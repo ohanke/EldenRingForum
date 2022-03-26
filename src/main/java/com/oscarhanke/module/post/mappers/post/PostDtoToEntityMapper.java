@@ -8,7 +8,7 @@ public class PostDtoToEntityMapper {
         return new PostEntity()
                 .setAuthor(postDto.getAuthor())
                 .setTitle(postDto.getTitle())
-                .setContent(postDto.getContent())
+                .setTextArea(postDto.getTextArea())
                 .setUuid(postDto.getUuid());
     }
 }

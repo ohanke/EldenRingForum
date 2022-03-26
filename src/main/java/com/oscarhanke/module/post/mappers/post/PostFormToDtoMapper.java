@@ -8,7 +8,7 @@ public class PostFormToDtoMapper {
         return new PostDto(
                 postForm.getAuthor(),
                 postForm.getTitle(),
-                postForm.getContent()
+                postForm.getTextArea()
         );
     }
 }

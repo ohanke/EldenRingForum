@@ -3,7 +3,7 @@ package com.oscarhanke.module.post.form;
 public class PostForm {
     private String author;
     private String title;
-    private String content;
+    private String textArea;
 
     public String getAuthor() {
         return author;
@@ -23,12 +23,12 @@ public class PostForm {
         return this;
     }
 
-    public String getContent() {
-        return content;
+    public String getTextArea() {
+        return textArea;
     }
 
-    public PostForm setContent(String content) {
-        this.content = content;
+    public PostForm setTextArea(String textArea) {
+        this.textArea = textArea;
         return this;
     }
 }

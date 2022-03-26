@@ -6,22 +6,22 @@ import java.util.UUID;
 public class PostDto {
     private final String author;
     private final String title;
-    private final String content;
+    private final String textArea;
     private final String uuid;
     private List<CommentDto> comments;
 
-    public PostDto(String author, String title, String content, String uuid, List<CommentDto> comments) {
+    public PostDto(String author, String title, String textArea, String uuid, List<CommentDto> comments) {
         this.author = author;
         this.title = title;
-        this.content = content;
+        this.textArea = textArea;
         this.uuid = uuid;
         this.comments = comments;
     }
 
-    public PostDto(String author, String title, String content) {
+    public PostDto(String author, String title, String textArea) {
         this.author = author;
         this.title = title;
-        this.content = content;
+        this.textArea = textArea;
         this.uuid = UUID.randomUUID().toString();
         this.comments = null;
     }
@@ -34,8 +34,8 @@ public class PostDto {
         return title;
     }
 
-    public String getContent() {
-        return content;
+    public String getTextArea() {
+        return textArea;
     }
 
     public String getUuid() {
@@ -51,7 +51,7 @@ public class PostDto {
         return "PostDto{" +
                 "author='" + author + '\'' +
                 ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
+                ", textArea='" + textArea + '\'' +
                 ", uuid='" + uuid + '\'' +
                 ", comments=" + comments +
                 '}';

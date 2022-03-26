@@ -13,7 +13,7 @@ public class PostEntityToDtoMapper {
         return new PostDto(
                 entity.getAuthor(),
                 entity.getTitle(),
-                entity.getContent(),
+                entity.getTextArea(),
                 entity.getUuid(),
                 CommentEntityToDtoMapper.map(entity.getComments()));
     }

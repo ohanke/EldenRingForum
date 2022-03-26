@@ -19,7 +19,7 @@ public class PostEntity {
     private Long id;
     private String author;
     private String title;
-    private String content;
+    private String textArea;
     private String uuid;
 
     @OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -52,12 +52,12 @@ public class PostEntity {
         return this;
     }
 
-    public String getContent() {
-        return content;
+    public String getTextArea() {
+        return textArea;
     }
 
-    public PostEntity setContent(String content) {
-        this.content = content;
+    public PostEntity setTextArea(String content) {
+        this.textArea = content;
         return this;
     }
 
