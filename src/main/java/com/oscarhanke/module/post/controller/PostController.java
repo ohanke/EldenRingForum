@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
+
 @Controller
 public class PostController {
 
@@ -41,8 +43,8 @@ public class PostController {
     }
 
     @PostMapping("/savePost")
-    public String saveCreatedPost(@ModelAttribute("postForm") PostForm postForm){
-        PostDto postDto = PostFormToDtoMapper.map(postForm);
+    public String saveCreatedPost(@ModelAttribute("postForm") PostForm postForm, Principal principal){
+        PostDto postDto = PostFormToDtoMapper.map(postForm, principal);
         PostEntity postEntity = PostDtoToEntityMapper.map(postDto);
         postRepository.save(postEntity);
         return "redirect:post/" + postEntity.getUuid();
