@@ -15,30 +15,55 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
-@Component public class AuthProvider implements AuthenticationProvider {
+@Component
+public class AuthProvider implements AuthenticationProvider {
     private static final int ATTEMPTS_LIMIT = 3;
-    @Autowired private SecurityUserDetailsService userDetailsService;
-    @Autowired private PasswordEncoder passwordEncoder;
-    @Autowired private AttemptsRepository attemptsRepository;
-    @Autowired private UserRepository userRepository;
+    @Autowired
+    private SecurityUserDetailsService userDetailsService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private AttemptsRepository attemptsRepository;
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
-    public Authentication authenticate(Authentication authentication)
-            throws AuthenticationException {
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+
         String username = authentication.getName();
-        Optional<AttemptsEntity>
-                userAttempts = attemptsRepository.findAttemptsEntityByUsername(username);
-        if (userAttempts.isPresent()) {
-            AttemptsEntity attempts = userAttempts.get();
-            attempts.setAttempts(0); attemptsRepository.save(attempts);
+        // extract the user credentials
+        String password = (String) authentication.getCredentials();
+
+        // fetch user details from database
+        Optional<UserEntity> userByUsername = userRepository.findUserEntityByUsername(username);
+
+        // check if user is not locked
+        if (userByUsername.isPresent()) {
+            if (!userByUsername.get().isAccountNonLocked()) {
+                throw new LockedException("Account locked");
+            }
+
+            if (passwordEncoder.matches(password, userByUsername.get().getPassword())) {
+                processSuccessAttempt(username);
+                return new UsernamePasswordAuthenticationToken(username, password, List.of());
+            } else {
+                processFailedAttempts(username, userByUsername.get());
+            }
         }
-        // WYGLĄDA
-        // JAKBY
-        // BRAKOWAŁO
-        // KODU
-        return authentication; // TEGO RETURNA TEŻ WGL NIE BYŁO W TUTORIALU
+        return null;
     }
+
+    private void processSuccessAttempt(String username) {
+        attemptsRepository.findAttemptsEntityByUsername(username)
+                .ifPresent(userAttempts -> {
+                    userAttempts.setAttempts(0);
+                    attemptsRepository.save(userAttempts);
+                });
+    }
+
     private void processFailedAttempts(String username, UserEntity user) {
         Optional<AttemptsEntity>
                 userAttempts = attemptsRepository.findAttemptsEntityByUsername(username);
@@ -60,7 +85,9 @@ import java.util.Optional;
             }
         }
     }
-    @Override public boolean supports(Class<?> authentication) {
+
+    @Override
+    public boolean supports(Class<?> authentication) {
         return true;
     }
 }
