@@ -3,13 +3,10 @@
 
     <div class="col-4">
         <form action="#" th:action="@{/post/{uuid}/addComment(uuid=${post.uuid})}" th:object="${commentForm}" method="POST">
+            <br/>
             <div class="form-group">
-                <label>Author</label>
-                <input type="text" th:field="*{author}" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Content</label>
-                <input type="text" th:field="*{content}" class="form-control">
+                <label>Text area</label>
+                <input type="text" th:field="*{textArea}" class="form-control">
             </div>
             <br/>
             <button type="submit" class="btn btn-primary">Add Comment</button>

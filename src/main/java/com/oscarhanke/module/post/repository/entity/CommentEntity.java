@@ -1,6 +1,7 @@
 package com.oscarhanke.module.post.repository.entity;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,8 @@ public class CommentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String author;
-    private String content;
+    @Column(name = "text_area")
+    private String textArea;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
@@ -56,12 +58,12 @@ public class CommentEntity {
         return this;
     }
 
-    public String getContent() {
-        return content;
+    public String getTextArea() {
+        return textArea;
     }
 
-    public CommentEntity setContent(String content) {
-        this.content = content;
+    public CommentEntity setTextArea(String content) {
+        this.textArea = content;
         return this;
     }
 

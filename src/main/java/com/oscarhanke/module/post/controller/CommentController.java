@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
+
 @Controller
 public class CommentController {
 
@@ -22,9 +24,12 @@ public class CommentController {
     private CommentRepository commentRepository;
 
     @PostMapping("/post/{uuid}/addComment")
-    public String saveCreatedComment(@PathVariable("uuid") String uuid, @ModelAttribute("commentForm") CommentForm commentForm) {
+    public String saveCreatedComment(
+            @PathVariable("uuid") String uuid,
+            @ModelAttribute("commentForm") CommentForm commentForm,
+            Principal principal){
         PostEntity postEntity = postRepository.findOneByUuid(uuid);
-        CommentEntity commentEntity = CommentFormToEntityMapper.map(commentForm, postEntity);
+        CommentEntity commentEntity = CommentFormToEntityMapper.map(commentForm, postEntity, principal);
         commentRepository.save(commentEntity);
         return "redirect:/post/{uuid}";
     }

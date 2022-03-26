@@ -5,14 +5,14 @@ insert into post (id, author, title, content, uuid) values (4, 'arek', 'Przyklad
 insert into post (id, author, title, content, uuid) values (5, 'darek', 'Przykladowy tytul piatego posta', 'przykladowa zawartosc postu piec', '3eca858e-e23b-416a-942e-958e421474ec');
 insert into post (id, author, title, content, uuid) values (6, 'jarek', 'Przykladowy tytul szostego posta', 'przykladowa zawartosc postu szesc', '3b9582d4-613e-4f17-91fa-a8f58a8df8d6');
 
-insert into comment(id, author, content, post_id) values (1, 'marek', 'super post', 1);
-insert into comment(id, author, content, post_id) values (2, 'arek', 'dzieki!!!!!!', 2);
-insert into comment(id, author, content, post_id) values (3, 'jarek', 'naura', 3);
-insert into comment(id, author, content, post_id) values (4, 'darek', 'zegnam ozieble', 4);
-insert into comment(id, author, content, post_id) values (5, 'basia', 'bardzo pomocne polecam', 5);
-insert into comment(id, author, content, post_id) values (6, 'kasia', 'ty cebulaku', 6);
-insert into comment(id, author, content, post_id) values (7, 'asia', 'zal mi cie', 1);
-insert into comment(id, author, content, post_id) values (8, 'paweł', 'jak wrocic do strony glownej???', 1);
+insert into comment(id, author, text_area, post_id) values (1, 'marek', 'super post', 1);
+insert into comment(id, author, text_area, post_id) values (2, 'arek', 'dzieki!!!!!!', 2);
+insert into comment(id, author, text_area, post_id) values (3, 'jarek', 'naura', 3);
+insert into comment(id, author, text_area, post_id) values (4, 'darek', 'zegnam ozieble', 4);
+insert into comment(id, author, text_area, post_id) values (5, 'basia', 'bardzo pomocne polecam', 5);
+insert into comment(id, author, text_area, post_id) values (6, 'kasia', 'ty cebulaku', 6);
+insert into comment(id, author, text_area, post_id) values (7, 'asia', 'zal mi cie', 1);
+insert into comment(id, author, text_area, post_id) values (8, 'paweł', 'jak wrocic do strony glownej???', 1);
 
 insert into comment_rating(id ,comment_id, status, author) values (1, 1, 'LIKE', 'Asia');
 insert into comment_rating(id, comment_id, status, author) values (2, 2, 'LIKE', 'Basia');

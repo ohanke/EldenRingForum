@@ -2,7 +2,7 @@ package com.oscarhanke.module.post.form;
 
 public class CommentForm {
     private String author;
-    private String content;
+    private String textArea;
 
     public String getAuthor() {
         return author;
@@ -13,12 +13,12 @@ public class CommentForm {
         return this;
     }
 
-    public String getContent() {
-        return content;
+    public String getTextArea() {
+        return textArea;
     }
 
-    public CommentForm setContent(String content) {
-        this.content = content;
+    public CommentForm setTextArea(String textArea) {
+        this.textArea = textArea;
         return this;
     }
 }
