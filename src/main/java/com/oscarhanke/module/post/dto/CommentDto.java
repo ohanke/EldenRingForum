@@ -10,7 +10,7 @@ public class CommentDto {
     private int dislikes;
     private Set<String> ratingAuthors;
     private boolean commentedByPrincipal;
-
+    private boolean isPrincipalAuthor;
 
     public CommentDto(Long id, String author, String textArea) {
         this.id = id;
@@ -18,7 +18,15 @@ public class CommentDto {
         this.textArea = textArea;
     }
 
-    public CommentDto(Long id, String author, String textArea, int likes, int dislikes, Set<String> ratingAuthors, boolean commentedByPrincipal) {
+    public CommentDto(
+            Long id,
+            String author,
+            String textArea,
+            int likes,
+            int dislikes,
+            Set<String> ratingAuthors,
+            boolean commentedByPrincipal,
+            boolean isPrincipalAuthor) {
         this.id = id;
         this.author = author;
         this.textArea = textArea;
@@ -26,6 +34,7 @@ public class CommentDto {
         this.dislikes = dislikes;
         this.ratingAuthors = ratingAuthors;
         this.commentedByPrincipal = commentedByPrincipal;
+        this.isPrincipalAuthor = isPrincipalAuthor;
     }
 
     public boolean isCommentedByPrincipal() {
@@ -34,6 +43,15 @@ public class CommentDto {
 
     public CommentDto setCommentedByPrincipal(boolean commentedByPrincipal) {
         this.commentedByPrincipal = commentedByPrincipal;
+        return this;
+    }
+
+    public boolean isPrincipalAuthor() {
+        return isPrincipalAuthor;
+    }
+
+    public CommentDto setPrincipalAuthor(boolean principalAuthor) {
+        isPrincipalAuthor = principalAuthor;
         return this;
     }
 

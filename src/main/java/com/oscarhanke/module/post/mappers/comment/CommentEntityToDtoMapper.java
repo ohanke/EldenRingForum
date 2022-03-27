@@ -23,7 +23,8 @@ public class CommentEntityToDtoMapper {
                 entity.getLikes(),
                 entity.getDislikes(),
                 entity.getRatingAuthors(),
-                entity.getRatingAuthors().contains(principalName)
+                entity.getRatingAuthors().contains(principalName),
+                entity.getAuthor().equals(principalName)
         );
     }
 }

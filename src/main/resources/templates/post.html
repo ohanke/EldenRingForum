@@ -41,8 +41,10 @@
                     <a th:href="@{/post/{uuid}/comment/{id}/rating/LIKE(uuid=${post.uuid},id=${comment.id})}" class="btn btn-primary">Like</a>
                     <a th:href="@{/post/{uuid}/comment/{id}/rating/DISLIKE(uuid=${post.uuid},id=${comment.id})}" class="btn btn-danger">Dislike</a>
                 </div>
-                <br/>
-                <a th:href="@{/post/{uuid}/deleteComment/{id}(uuid=${post.uuid},id=${comment.id})}" class="btn btn-danger">Delete Comment</a>
+                <div th:if="${comment.isPrincipalAuthor}">
+                    <br/>
+                    <a th:href="@{/post/{uuid}/deleteComment/{id}(uuid=${post.uuid},id=${comment.id})}" class="btn btn-danger">Delete Comment</a>
+                </div>
             </li>
         </ul>
 

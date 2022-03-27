@@ -17,7 +17,8 @@ public class PostEntityToDtoMapper {
                 entity.getTextArea(),
                 entity.getUuid(),
                 CommentEntityToDtoMapper.map(entity.getComments(), principalName),
-                entity.getAuthor().equals(principalName));
+                entity.getAuthor().equals(principalName)
+        );
     }
 
     public static List<PostDto> map(List<PostEntity> entities){
