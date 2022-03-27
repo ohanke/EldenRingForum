@@ -7,20 +7,42 @@
 
 <div th:replace="fragments/header.html :: header"></div>
 
-<!-- Begin page content -->
+
 <main class="flex-shrink-0">
     <div class="container">
-        <!-- TUTU -->
-        <div th:replace="fragments/post.html :: post"></div>
+        <h1 th:text="${post.title}"></h1>
+        <p th:text="${post.textArea}"></p>
+        <div th:if="${post.isPrincipalAuthor}">
+            <br/>
+            <a th:href="@{/deletePost/{uuid}(uuid=${post.uuid})}" class="btn btn-danger">Delete Post</a>
+        </div>
         <br/>
-        <a th:href="@{/deletePost/{uuid}(uuid=${post.uuid})}" class="btn btn-danger">Delete Post</a>
-        <br/>
-        <div th:replace="fragments/commentForm.html :: commentForm"></div>
+        <h1 class="mt-5">Add Comment</h1>
+        <div class="col-4">
+            <form action="#" th:action="@{/post/{uuid}/addComment(uuid=${post.uuid})}" th:object="${commentForm}" method="POST">
+                <br/>
+                <div class="form-group">
+                    <label>Text area</label>
+                    <input type="text" th:field="*{textArea}" class="form-control" required>
+                </div>
+                <br/>
+                <button type="submit" class="btn btn-primary">Add Comment</button>
+            </form>
+        </div>
         <br/>
         <br/>
         <ul class="list-group">
             <li th:each="comment : ${post.comments}" class="list-group-item">
-                <div th:replace="fragments/comment.html :: template(comment = ${comment})"></div>
+                <strong><p th:text="${comment.author}"></p></strong>
+                <p th:text="${comment.textArea}"></p>
+                <p th:text="${comment.getLikes}"></p>
+                <p th:text="${comment.getDislikes}"></p>
+                <div th:if="${!comment.commentedByPrincipal}">
+                    <a th:href="@{/post/{uuid}/comment/{id}/rating/LIKE(uuid=${post.uuid},id=${comment.id})}" class="btn btn-primary">Like</a>
+                    <a th:href="@{/post/{uuid}/comment/{id}/rating/DISLIKE(uuid=${post.uuid},id=${comment.id})}" class="btn btn-danger">Dislike</a>
+                </div>
+                <br/>
+                <a th:href="@{/post/{uuid}/deleteComment/{id}(uuid=${post.uuid},id=${comment.id})}" class="btn btn-danger">Delete Comment</a>
             </li>
         </ul>
 

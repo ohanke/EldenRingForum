@@ -7,17 +7,19 @@
 
 <div th:replace="fragments/header.html :: header"></div>
 
-<!-- Begin page content -->
 <main class="flex-shrink-0">
     <div class="container">
-        <!-- TUTU -->
         <h1 class="mt-5">Posts list</h1>
 
-        <div th:replace="fragments/createPostBtn.html :: createPostBtn"></div>
+        <a th:href="@{'createPost'}">
+            <button type="submit" class="btn btn-primary">Create New Post</button>
+        </a>
 
         <ul class="list-group">
             <li th:each="post : ${posts}" class="list-group-item">
-                <div th:replace="fragments/posts.html :: template(posts=${posts})"></div>
+                <p th:text="${post.author}"></p>
+                <p th:text="${post.title}"></p>
+                <a th:href="@{'/post/' + ${post.uuid}}">more</a>
             </li>
         </ul>
     </div>

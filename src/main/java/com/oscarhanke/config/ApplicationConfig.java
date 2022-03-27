@@ -26,7 +26,7 @@ public class ApplicationConfig extends WebSecurityConfigurerAdapter {
                         "/register**")
                 .permitAll() .anyRequest().authenticated()
                 .and()
-                .formLogin() .loginPage("/login")
+                .formLogin() .loginPage("/login").defaultSuccessUrl("/dashboard", true)
                 .permitAll()
                 .and()
                 .logout() .invalidateHttpSession(true)
