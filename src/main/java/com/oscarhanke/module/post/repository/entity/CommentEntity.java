@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
@@ -82,5 +83,9 @@ public class CommentEntity {
 
     public int getDislikes(){
         return ratings.stream().filter(r -> r.getStatus().equals(CommentRatingStatus.DISLIKE)).collect(Collectors.toSet()).size();
+    }
+
+    public Set<String> getRatingAuthors(){
+        return ratings.stream().map(CommentRatingEntity::getAuthor).collect(Collectors.toSet());
     }
 }

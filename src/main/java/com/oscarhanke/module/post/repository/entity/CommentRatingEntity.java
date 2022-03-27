@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name = "comment_rating")
@@ -59,5 +60,18 @@ public class CommentRatingEntity {
     public CommentRatingEntity setComment(CommentEntity comment) {
         this.comment = comment;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CommentRatingEntity that = (CommentRatingEntity) o;
+        return author.equals(that.author);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(author);
     }
 }

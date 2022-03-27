@@ -7,6 +7,7 @@ import com.oscarhanke.module.post.repository.entity.PostEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 
 @Service
@@ -21,13 +22,13 @@ public class PostService {
         return dtos;
     }
 
-    public PostDto getPost(String uuid){
+    public PostDto getPost(String uuid, String principalName){
         List<PostEntity> entities = postRepository.findAll();
         PostEntity entity = entities.stream()
                 .filter(i->i.getUuid().equals(uuid))
                 .findFirst()
                 .get();
-        PostDto dto = PostEntityToDtoMapper.map(entity);
+        PostDto dto = PostEntityToDtoMapper.map(entity, principalName);
         return dto;
     }
 }

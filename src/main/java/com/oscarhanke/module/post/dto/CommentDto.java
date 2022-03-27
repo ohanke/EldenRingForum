@@ -1,11 +1,15 @@
 package com.oscarhanke.module.post.dto;
 
+import java.util.Set;
+
 public class CommentDto {
     private Long id;
     private String author;
     private String textArea;
     private int likes;
     private int dislikes;
+    private Set<String> ratingAuthors;
+    private boolean commentedByPrincipal;
 
 
     public CommentDto(Long id, String author, String textArea) {
@@ -14,12 +18,27 @@ public class CommentDto {
         this.textArea = textArea;
     }
 
-    public CommentDto(Long id, String author, String textArea, int likes, int dislikes) {
+    public CommentDto(Long id, String author, String textArea, int likes, int dislikes, Set<String> ratingAuthors, boolean commentedByPrincipal) {
         this.id = id;
         this.author = author;
         this.textArea = textArea;
         this.likes = likes;
         this.dislikes = dislikes;
+        this.ratingAuthors = ratingAuthors;
+        this.commentedByPrincipal = commentedByPrincipal;
+    }
+
+    public boolean isCommentedByPrincipal() {
+        return commentedByPrincipal;
+    }
+
+    public CommentDto setCommentedByPrincipal(boolean commentedByPrincipal) {
+        this.commentedByPrincipal = commentedByPrincipal;
+        return this;
+    }
+
+    public Set<String> getRatingAuthors() {
+        return ratingAuthors;
     }
 
     public int getLikes() {

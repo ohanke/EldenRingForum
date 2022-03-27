@@ -29,8 +29,8 @@ public class PostController {
     private PostService postService;
 
     @GetMapping("/post/{uuid}")
-    public String getPost(@PathVariable("uuid") String uuid, Model model){
-        model.addAttribute("post", postService.getPost(uuid));
+    public String getPost(@PathVariable("uuid") String uuid, Model model, Principal principal){
+        model.addAttribute("post", postService.getPost(uuid, principal.getName()));
         CommentForm commentForm = new CommentForm();
         model.addAttribute("commentForm", commentForm);
         return "post.html";
