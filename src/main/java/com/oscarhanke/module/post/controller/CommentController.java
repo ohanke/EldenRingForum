@@ -35,8 +35,10 @@ public class CommentController {
     }
 
     @GetMapping("post/{uuid}/deleteComment/{id}")
-    public String deleteComment(@PathVariable ("id") Long id){
-        commentRepository.delete(commentRepository.getById(id));
+    public String deleteComment(@PathVariable ("id") Long id, Principal principal){
+        if (commentRepository.findById(id).get().getAuthor().equals(principal.getName())){
+            commentRepository.delete(commentRepository.getById(id));
+        }
         return "redirect:/post/{uuid}";
     }
 }

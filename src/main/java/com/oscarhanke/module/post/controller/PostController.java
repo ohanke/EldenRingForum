@@ -51,8 +51,10 @@ public class PostController {
     }
 
     @GetMapping("/deletePost/{uuid}")
-    public String deletePost(@PathVariable (name = "uuid") String uuid){
-        postRepository.delete(postRepository.findOneByUuid(uuid));
+    public String deletePost(@PathVariable (name = "uuid") String uuid, Principal principal){
+        if (postService.getPost(uuid, principal.getName()).isPrincipalAuthor()){
+            postRepository.delete(postRepository.findOneByUuid(uuid));
+        }
         return "redirect:/dashboard";
     }
 }
